@@ -1,3 +1,10 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +17,60 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header{
+  font-size: 30px;
+  padding: 5px;
+  background-color:rgb(188, 188, 188);
+  display: flex;
+  justify-content:space-between;
+  width: 100%;
+}
+
+.perf{
+  text-align: center;
+}
+
+.quickdata{
+  text-align: center;
+  width: 100%;
+}
+
+.per{
+  font-size: 20px;
+  display: inline-flex;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  align-items: center;
+  justify-content: center;
+}
+
+.perf{
+  width: 100%;
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+}
+
+.record{
+  width: 100%;
+}
+.secI{
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+.submitError{
+  color:red;
+  font-size: 13px;
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.record{
+  overflow: scroll;
 }
