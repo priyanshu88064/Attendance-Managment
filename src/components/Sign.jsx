@@ -15,7 +15,7 @@ function Sign() {
           section: e.target[1][e.target[1].selectedIndex].text,
         };
 
-        fetch(process.env.CREATE, {
+        fetch(process.env.SERVER + "/create", {
           method: "POST",
           headers: {
             "Content-Type": "application/json;charset=utf-8",
