@@ -57,7 +57,7 @@ function Record({ attendance, setAttendance, totAttend, delta, rollno }) {
           <input
             type="date"
             onChange={(e) => {
-              fetch(process.env.SERVER + "/userSubmit", {
+              fetch(process.env.REACT_APP_SERVER + "/userSubmit", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json;charset=utf-8",

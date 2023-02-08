@@ -15,7 +15,7 @@ function Sign() {
           section: e.target[1][e.target[1].selectedIndex].text,
         };
 
-        fetch(process.env.SERVER + "/create", {
+        fetch(process.env.REACT_APP_SERVER + "/create", {
           method: "POST",
           headers: {
             "Content-Type": "application/json;charset=utf-8",

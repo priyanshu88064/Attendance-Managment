@@ -17,7 +17,7 @@ function Login() {
             rollno: e.target[0].value,
           };
 
-          fetch(process.env.SERVER + "/login", {
+          fetch(process.env.REACT_APP_SERVER + "/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json;charset=utf-8",
