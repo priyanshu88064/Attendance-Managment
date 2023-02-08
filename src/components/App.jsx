@@ -26,7 +26,7 @@ function App() {
   );
 
   useEffect(() => {
-    fetch("http://localhost:80/record/" + rollno)
+    fetch(process.env.RECORD + rollno)
       .then((res) => res.json())
       .then((res) => {
         setStatus(res.status);

@@ -17,7 +17,7 @@ function Login() {
             rollno: e.target[0].value,
           };
 
-          fetch("http://localhost:80/login", {
+          fetch(process.env.LOGIN, {
             method: "POST",
             headers: {
               "Content-Type": "application/json;charset=utf-8",
