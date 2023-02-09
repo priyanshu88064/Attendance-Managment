@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Sign() {
+function Sign({ setLoader }) {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
@@ -9,6 +9,7 @@ function Sign() {
     <form
       onSubmit={(e) => {
         e.preventDefault();
+        setLoader(true);
 
         const user = {
           rollno: e.target[0].value,
@@ -28,9 +29,11 @@ function Sign() {
             if (res.message === 1) {
               navigate("/user/" + user.rollno);
             }
+            setLoader(false);
           })
           .catch((err) => {
             setMsg("Some Error Occured");
+            setLoader(false);
           });
       }}
     >

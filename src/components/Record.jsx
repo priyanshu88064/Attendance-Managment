@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
-function Record({ attendance, setAttendance, totAttend, delta, rollno }) {
+function Record({
+  attendance,
+  setAttendance,
+  totAttend,
+  delta,
+  rollno,
+  setLoader,
+}) {
   const subjects = [
     "compilerDesign",
     "compilerDesignLab",
@@ -57,6 +64,7 @@ function Record({ attendance, setAttendance, totAttend, delta, rollno }) {
           <input
             type="date"
             onChange={(e) => {
+              setLoader(true);
               fetch(process.env.REACT_APP_SERVER + "/userSubmit", {
                 method: "POST",
                 headers: {
@@ -66,6 +74,7 @@ function Record({ attendance, setAttendance, totAttend, delta, rollno }) {
               })
                 .then((res) => res.json())
                 .then((res) => {
+                  setLoader(false);
                   if (res.status === 1) {
                     window.location.reload();
                   } else {
@@ -73,6 +82,7 @@ function Record({ attendance, setAttendance, totAttend, delta, rollno }) {
                   }
                 })
                 .catch((err) => {
+                  setLoader(false);
                   setErrorMsg((prev) => ({
                     msg: "Some Error Occured",
                     ssub: sub,

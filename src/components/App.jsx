@@ -5,7 +5,7 @@ import QuickData from "./QuickData";
 import Record from "./Record";
 import { useParams } from "react-router-dom";
 
-function App() {
+function App({ setLoader }) {
   const { rollno } = useParams();
   const [access, setAccess] = useState(0);
   const [required, setRequired] = useState(0);
@@ -26,9 +26,11 @@ function App() {
   );
 
   useEffect(() => {
+    setLoader(true);
     fetch(process.env.REACT_APP_SERVER + "/record/" + rollno)
       .then((res) => res.json())
       .then((res) => {
+        setLoader(false);
         setStatus(res.status);
         if (res.status === 1) {
           setAccess(res.access);
@@ -39,6 +41,10 @@ function App() {
           setTotalClasses(res.totalClasses);
           setSection(res.section);
         }
+      })
+      .catch((err) => {
+        setStatus("Some Error occured.");
+        setLoader(false);
       });
   }, [rollno]);
 
@@ -60,6 +66,7 @@ function App() {
         totAttend={totAttend}
         delta={delta}
         rollno={rollno}
+        setLoader={setLoader}
       />
       <Performance totalClasses={totalClasses} />
     </div>

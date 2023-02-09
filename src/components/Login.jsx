@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({ setLoader }) {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
@@ -12,6 +12,8 @@ function Login() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+
+          setLoader(true);
 
           const user = {
             rollno: e.target[0].value,
@@ -26,6 +28,7 @@ function Login() {
           })
             .then((res) => res.json())
             .then((res) => {
+              setLoader(false);
               setMsg(res.message);
               if (res.message === 1) {
                 navigate("/user/" + user.rollno);
@@ -33,6 +36,7 @@ function Login() {
             })
             .catch((err) => {
               setMsg("Some Error Occured");
+              setLoader(false);
             });
         }}
       >
