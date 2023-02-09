@@ -41,7 +41,10 @@ function Performance({ totalClasses }) {
         &nbsp;<i className="bi bi-arrow-right-circle-fill"></i>&nbsp;
       </span>
       <span>
-        <button style={{ backgroundColor: color }} className="btn btn-danger">
+        <button
+          style={{ backgroundColor: color, color: "black" }}
+          className="btn btn-danger"
+        >
           {perf}
         </button>
       </span>

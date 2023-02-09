@@ -73,6 +73,7 @@ code {
 
 .record{
   overflow: scroll;
+  border: 1px solid gray;
 }
 
 .loader {
@@ -109,9 +110,20 @@ code {
 
 .loadscreen{
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box{
+  overflow: hidden;
+  background-color: rgb(72, 72, 72);
+  width: 40%;
+  height: 15%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
