@@ -127,4 +127,51 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: box 400ms ease-in-out;
+  -webkit-animation: box 400ms ease-in-out;
+}
+
+.rel-appear{
+  opacity: 0;
+  z-index: 1;
+}
+.rel-appear.rel-appear-active{
+  opacity: 1;
+  transition: opacity 300ms linear;
+}
+
+.load-ani-appear{
+  opacity: 0;
+}
+.load-ani-appear.load-ani-appear-active{
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+@keyframes box {
+  from {
+    transform: scale(0)
+  }
+
+  80% {
+    transform: scale(1.2)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+@-webkit-keyframes box {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  80% {
+    -webkit-transform: scale(1.2)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
-function Loading() {
+function Loading({ innerRef }) {
   return (
-    <div className="loadscreen">
+    <div ref={innerRef} className="loadscreen">
       <div className="box">
         <div className="loader"></div>
       </div>

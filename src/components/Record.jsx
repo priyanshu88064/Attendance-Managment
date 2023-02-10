@@ -1,5 +1,20 @@
 import React, { useState } from "react";
 
+const subjects = [
+  "compilerDesign",
+  "compilerDesignLab",
+  "computerNetwork",
+  "fullStack",
+  "fullStackLab",
+  "elective",
+  "careerSkill",
+  "careerSkillLab",
+  "softwareEngLab",
+];
+
+const up = <i className="bi bi-arrow-up"></i>;
+const down = <i className="bi bi-arrow-down"></i>;
+
 function Record({
   attendance,
   setAttendance,
@@ -8,24 +23,7 @@ function Record({
   rollno,
   setLoader,
 }) {
-  const subjects = [
-    "compilerDesign",
-    "compilerDesignLab",
-    "computerNetwork",
-    "fullStack",
-    "fullStackLab",
-    "elective",
-    "careerSkill",
-    "careerSkillLab",
-    "softwareEngLab",
-  ];
-
   const [errorMsg, setErrorMsg] = useState({ msg: "", ssub: "" });
-
-  const up = <i className="bi bi-arrow-up"></i>;
-  const down = <i className="bi bi-arrow-down"></i>;
-
-  // const delta
 
   const col = subjects.map((sub, ind) => {
     return (

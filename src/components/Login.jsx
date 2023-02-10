@@ -44,6 +44,7 @@ function Login({ setLoader }) {
           type="number"
           placeholder="Enter University Roll No."
           min="2000000"
+          required
         />
         <br />
         <button className="mt-2 btn btn-sm btn-primary">Login</button>
