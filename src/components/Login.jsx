@@ -6,7 +6,7 @@ function Login({ setLoader }) {
   const navigate = useNavigate();
 
   return (
-    <div className="login text-center mt-4">
+    <div className="login text-center mt-5">
       <h6>Login into your Attentendance portal.</h6>
 
       <form

@@ -5,8 +5,10 @@ import Sign from "./Sign";
 function Home({ loader, setLoader }) {
   return (
     <div className="home">
-      <div className="bg-secondary text-center display-6 p-1">
-        UNOFFICIAL ERP
+      <div className="header">
+        <span className="name" style={{ margin: "auto" }}>
+          Unofficial ERP
+        </span>
       </div>
       <Login setLoader={setLoader} />
       <h3 className="text-center mt-4">OR</h3>
