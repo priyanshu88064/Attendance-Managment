@@ -28,7 +28,6 @@ function Record({
   const col = subjects.map((sub, ind) => {
     return (
       <tr key={ind}>
-        <th>{ind + 1}</th>
         <td>
           {sub
             .replace(/([a-z])([A-Z])/g, "$1 $2")
@@ -99,14 +98,13 @@ function Record({
   });
 
   return (
-    <div className="record mt-4 text-center">
-      <table className="table table-striped table-bordered table-sm">
+    <div className="record mt-5">
+      <table className="table">
         <thead>
           <tr>
-            <th>#</th>
             <th>Subject</th>
             <th>Attended</th>
-            <th>Total Classes</th>
+            <th>Total</th>
             <th>Delta</th>
             <th>%</th>
             <th>Submit</th>

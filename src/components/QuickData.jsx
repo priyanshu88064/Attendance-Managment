@@ -25,7 +25,6 @@ function QuickData({ totalAttendance, access, required }) {
           {required}
         </span>
         <div>You have to attend {required} more classes.</div>
-        <hr />
       </div>
     </div>
   );

@@ -33,7 +33,7 @@ function Performance({ totalClasses }) {
   }
 
   return (
-    <div className="perf mt-3 mb-4">
+    <div className="perf mt-5 mb-5">
       <span>
         <button className="btn btn-primary">Performance</button>
       </span>

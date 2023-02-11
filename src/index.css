@@ -74,8 +74,31 @@ code {
 }
 
 .record{
-  width: 100%;
+  width: 95%;
+  margin: auto;
+  box-shadow: 1px 1px 5px rgb(176, 176, 176);
+  font-size: 15px;
+  overflow-x: scroll;
 }
+.record table{
+  white-space: nowrap;
+}
+.record table thead{
+  font-size: 13px;
+  background-color: rgb(249, 249, 249);
+}
+.record table thead tr th{
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+}
+.record table tbody tr td{
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 20px;
+}
+
+
 /* .secI{
   text-align: center;
   font-size: 25px;
@@ -86,11 +109,6 @@ code {
   font-size: 13px;
   font-style: italic;
   text-decoration: underline;
-}
-
-.record{
-  overflow: scroll;
-  border: 1px solid gray;
 }
 
 .loader {
