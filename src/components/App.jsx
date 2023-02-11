@@ -54,7 +54,7 @@ function App({ setLoader }) {
     <div className="main">
       <Header rollno={rollno} />
       {status !== 1 ? error : ""}
-      <div className="secI">Section-{section}</div>
+      {/* <div className="secI mt-4">Section-{section}</div> */}
       <QuickData
         totalAttendance={totalClasses}
         access={access}

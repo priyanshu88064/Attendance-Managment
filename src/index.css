@@ -21,11 +21,22 @@ code {
 
 .header{
   font-size: 30px;
-  padding: 5px;
-  background-color:rgb(188, 188, 188);
+  padding: 10px;
+  background-color:#c5401f;
   display: flex;
   justify-content:space-between;
   width: 100%;
+  box-shadow: 0 3px 7px gray;
+  position: sticky;
+  position: -webkit-sticky;
+  color: white;
+}
+.header i{
+  font-size: 25px;
+  align-self: center;
+}
+.header i:nth-child(3){
+  float: right;
 }
 
 .perf{
@@ -59,11 +70,11 @@ code {
 .record{
   width: 100%;
 }
-.secI{
+/* .secI{
   text-align: center;
   font-size: 25px;
   font-weight: bold;
-}
+} */
 .submitError{
   color:red;
   font-size: 13px;
