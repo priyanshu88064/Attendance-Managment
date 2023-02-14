@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const subjects = [
   "compilerDesign",
@@ -22,10 +24,32 @@ function Record({
   delta,
   rollno,
   setLoader,
+  dates,
 }) {
   const [errorMsg, setErrorMsg] = useState({ msg: "", ssub: "" });
+  const [startDate, setStartDate] = useState(new Date());
 
   const col = subjects.map((sub, ind) => {
+    var dateColor = [];
+
+    if (dates[ind] && dates[ind]["green"] && dates[ind]["red"]) {
+      dateColor = [
+        {
+          "react-datepicker__day--highlighted-custom-1": dates[ind][
+            "green"
+          ].map((d) => {
+            return new Date(d);
+          }),
+        },
+        {
+          "react-datepicker__day--highlighted-custom-2": dates[ind]["red"].map(
+            (d) => {
+              return new Date(d);
+            }
+          ),
+        },
+      ];
+    }
     return (
       <tr key={ind}>
         <td>
@@ -58,16 +82,29 @@ function Record({
           {((attendance[ind] / totAttend[ind]) * 100).toPrecision(3)}%
         </td>
         <td>
-          <input
-            type="date"
-            onChange={(e) => {
+          <DatePicker
+            onChange={(date) => {
+              setStartDate(date);
+
+              const mth =
+                (date.getMonth() + 1).toString().length <= 1
+                  ? "0" + (date.getMonth() + 1)
+                  : "" + (date.getMonth() + 1);
+              const dt =
+                date.getDate().toString().length <= 1
+                  ? "0" + date.getDate()
+                  : "" + date.getDate();
+
+              var dateStr = "";
+              dateStr = dateStr + date.getFullYear() + "-" + mth + "-" + dt;
+
               setLoader(true);
               fetch(process.env.REACT_APP_SERVER + "/userSubmit", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json;charset=utf-8",
                 },
-                body: JSON.stringify({ date: e.target.value, sub, rollno }),
+                body: JSON.stringify({ date: dateStr, sub, rollno }),
               })
                 .then((res) => res.json())
                 .then((res) => {
@@ -86,6 +123,12 @@ function Record({
                   }));
                 });
             }}
+            renderInput={(params) => console.log(params)}
+            selected={startDate}
+            withPortal
+            showMonthDropdown
+            highlightDates={dateColor}
+            className="dat"
           />
           {errorMsg.ssub === sub ? (
             <div className="submitError">{errorMsg.msg}</div>

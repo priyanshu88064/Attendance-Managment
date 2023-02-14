@@ -9,7 +9,7 @@ function Header({ rollno }) {
       <i className="bi bi-list list" />
       <span className="name">{rollno}</span>
       <i
-        class="bi bi-box-arrow-right"
+        className="bi bi-box-arrow-right"
         onClick={() => {
           navigate("/");
         }}
