@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -28,6 +28,12 @@ function Record({
 }) {
   const [errorMsg, setErrorMsg] = useState({ msg: "", ssub: "" });
   const [startDate, setStartDate] = useState(new Date());
+
+  const CusInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="dat" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
 
   const col = subjects.map((sub, ind) => {
     var dateColor = [];
@@ -128,7 +134,8 @@ function Record({
             withPortal
             showMonthDropdown
             highlightDates={dateColor}
-            className="dat"
+            // className="dat"
+            customInput={<CusInput />}
           />
           {errorMsg.ssub === sub ? (
             <div className="submitError">{errorMsg.msg}</div>
