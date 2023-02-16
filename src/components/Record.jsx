@@ -1,5 +1,6 @@
 import React, { forwardRef, useState } from "react";
 import DatePicker from "react-datepicker";
+import { CalendarContainer } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const subjects = [
@@ -56,6 +57,24 @@ function Record({
         },
       ];
     }
+
+    const MyContainer = ({ className, children }) => {
+      return (
+        <div>
+          <CalendarContainer className={className}>
+            <div className="cal-sub">
+              {sub
+                .replace(/([a-z])([A-Z])/g, "$1 $2")
+                .charAt(0)
+                .toUpperCase() +
+                sub.replace(/([a-z])([A-Z])/g, "$1 $2").slice(1)}
+            </div>
+            <div style={{ position: "relative" }}>{children}</div>
+          </CalendarContainer>
+        </div>
+      );
+    };
+
     return (
       <tr key={ind}>
         <td>
@@ -124,7 +143,7 @@ function Record({
                 .catch((err) => {
                   setLoader(false);
                   setErrorMsg((prev) => ({
-                    msg: "Some Error Occured",
+                    msg: "Cannot connect with server.",
                     ssub: sub,
                   }));
                 });
@@ -134,8 +153,8 @@ function Record({
             withPortal
             showMonthDropdown
             highlightDates={dateColor}
-            // className="dat"
             customInput={<CusInput />}
+            calendarContainer={MyContainer}
           />
           {errorMsg.ssub === sub ? (
             <div className="submitError">{errorMsg.msg}</div>

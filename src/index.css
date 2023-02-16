@@ -231,3 +231,9 @@ code {
   font-size: small;
   padding: 10px 5px 10px 5px;
 }
+.cal-sub{
+  background-color: rgb(204, 204, 204);
+  text-align: center;
+  padding: 5px 0 5px 0;
+  color: #535353;
+}

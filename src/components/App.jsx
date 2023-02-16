@@ -45,7 +45,7 @@ function App({ setLoader }) {
         }
       })
       .catch((err) => {
-        setStatus("Some Error occured.");
+        setStatus("Cannot connect with server.");
         setLoader(false);
       });
   }, [rollno]);

@@ -32,7 +32,7 @@ function Sign({ setLoader }) {
             setLoader(false);
           })
           .catch((err) => {
-            setMsg("Some Error Occured");
+            setMsg("Cannot connect with server.");
             setLoader(false);
           });
       }}
