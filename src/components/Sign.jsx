@@ -27,6 +27,7 @@ function Sign({ setLoader }) {
           .then((res) => {
             setMsg(res.message);
             if (res.message === 1) {
+              localStorage.setItem("rollno", user.rollno);
               navigate("/user/" + user.rollno);
             }
             setLoader(false);

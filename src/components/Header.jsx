@@ -11,6 +11,7 @@ function Header({ rollno }) {
       <i
         className="bi bi-box-arrow-right"
         onClick={() => {
+          localStorage.removeItem("rollno");
           navigate("/");
         }}
       ></i>

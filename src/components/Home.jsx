@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import Sign from "./Sign";
 
 function Home({ loader, setLoader }) {
+  const [rollno, setRollno] = useState(
+    localStorage.getItem("rollno") ? localStorage.getItem("rollno") : null
+  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (rollno) {
+      navigate("/user/" + rollno);
+    }
+  }, [rollno]);
+
   return (
     <div className="home">
       <div className="header">
