@@ -26,6 +26,7 @@ function Record({
   rollno,
   setLoader,
   dates,
+  recent,
 }) {
   const [errorMsg, setErrorMsg] = useState({ msg: "", ssub: "" });
   const [startDate, setStartDate] = useState(new Date());
@@ -82,6 +83,11 @@ function Record({
             .replace(/([a-z])([A-Z])/g, "$1 $2")
             .charAt(0)
             .toUpperCase() + sub.replace(/([a-z])([A-Z])/g, "$1 $2").slice(1)}
+          {recent === sub ? (
+            <sup className="lastupdated">Recent Class</sup>
+          ) : (
+            ""
+          )}
         </td>
         <td>{attendance[ind]}</td>
         <td>{totAttend[ind]}</td>
