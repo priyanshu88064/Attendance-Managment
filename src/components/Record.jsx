@@ -197,7 +197,7 @@ function Record({
   return (
     <div className="record mt-5">
       {pop && C11}
-      {pop == false ? (
+      {pop === false ? (
         <table className="table">
           <thead>
             <tr>

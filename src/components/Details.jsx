@@ -10,11 +10,7 @@ const yesno = (
 );
 
 function Details({ setPop, sub, totalArray, dates, subjects }) {
-  console.log(dates);
-
   const row = totalArray[sub].map((eachDate, ind) => {
-    console.log(dates[[...subjects].indexOf(sub)]["green"]);
-    console.log(eachDate);
     return (
       <tr>
         <td>{eachDate}</td>
@@ -43,7 +39,7 @@ function Details({ setPop, sub, totalArray, dates, subjects }) {
             setPop((pop) => !pop);
           }}
         >
-          <i class="bi bi-x-lg"></i>
+          <i class="bi bi-x-square-fill"></i>
         </span>
       </div>
       <div className="block">

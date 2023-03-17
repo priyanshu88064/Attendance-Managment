@@ -253,6 +253,7 @@ code {
 .cut{
   float: right;
   margin-right: 10px;
+  font-size: 20px;
 }
 .c12{
   text-decoration: underline;
