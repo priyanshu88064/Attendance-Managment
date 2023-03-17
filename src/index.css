@@ -245,3 +245,16 @@ code {
   color: darkgreen;
   border-radius: 3px;
 }
+.sub{
+  background-color: #c3c3c3;
+  text-align: center;
+  padding:5px 0 5px 0;
+}
+.cut{
+  float: right;
+  margin-right: 10px;
+}
+.c12{
+  text-decoration: underline;
+  color: blue;
+}

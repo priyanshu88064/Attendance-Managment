@@ -17,6 +17,7 @@ function App({ setLoader }) {
   const [section, setSection] = useState("");
   const [dates, setDates] = useState([]);
   const [recent, setRecent] = useState("");
+  const [totalArray, setTotalArray] = useState([]);
 
   const error = (
     <div
@@ -44,6 +45,7 @@ function App({ setLoader }) {
           setSection(res.section);
           setDates(res.dates);
           setRecent(res.recent);
+          setTotalArray(res.totalArray);
         }
       })
       .catch((err) => {
@@ -73,6 +75,7 @@ function App({ setLoader }) {
         setLoader={setLoader}
         dates={dates}
         recent={recent}
+        totalArray={totalArray}
       />
       <Performance totalClasses={totalClasses} />
     </div>

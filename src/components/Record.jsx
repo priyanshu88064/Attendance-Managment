@@ -2,6 +2,7 @@ import React, { forwardRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import { CalendarContainer } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Details from "./Details";
 
 const subjects = [
   "compilerDesign",
@@ -27,9 +28,24 @@ function Record({
   setLoader,
   dates,
   recent,
+  totalArray,
 }) {
   const [errorMsg, setErrorMsg] = useState({ msg: "", ssub: "" });
   const [startDate, setStartDate] = useState(new Date());
+  const [pop, setPop] = useState(false);
+  const [sub, setSub] = useState("");
+
+  var C11 = (
+    <div className="c11">
+      <Details
+        setPop={setPop}
+        sub={sub}
+        totalArray={totalArray}
+        dates={dates}
+        subjects={subjects}
+      />
+    </div>
+  );
 
   const CusInput = forwardRef(({ value, onClick }, ref) => (
     <button className="dat" onClick={onClick} ref={ref}>
@@ -78,7 +94,13 @@ function Record({
 
     return (
       <tr key={ind}>
-        <td>
+        <td
+          className="c12"
+          onClick={() => {
+            setPop((pop) => !pop);
+            setSub(sub);
+          }}
+        >
           {sub
             .replace(/([a-z])([A-Z])/g, "$1 $2")
             .charAt(0)
@@ -174,20 +196,25 @@ function Record({
 
   return (
     <div className="record mt-5">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Attended</th>
-            <th>Total</th>
-            <th>Delta</th>
-            <th>%</th>
-            <th>Submit</th>
-          </tr>
-        </thead>
+      {pop && C11}
+      {pop == false ? (
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Subject</th>
+              <th>Attended</th>
+              <th>Total</th>
+              <th>Delta</th>
+              <th>%</th>
+              <th>Submit</th>
+            </tr>
+          </thead>
 
-        <tbody>{col}</tbody>
-      </table>
+          <tbody>{col}</tbody>
+        </table>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
