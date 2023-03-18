@@ -90,7 +90,10 @@ code {
 }
 .record table thead{
   font-size: 13px;
-  background-color: rgb(249, 249, 249);
+  background-color: rgb(217, 217, 217);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .record table thead tr th{
   padding-top: 25px;
