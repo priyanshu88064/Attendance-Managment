@@ -1,8 +1,9 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import { CalendarContainer } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Details from "./Details";
+import { CSSTransition } from "react-transition-group";
 
 const subjects = [
   "compilerDesign",
@@ -34,18 +35,8 @@ function Record({
   const [startDate, setStartDate] = useState(new Date());
   const [pop, setPop] = useState(false);
   const [sub, setSub] = useState("");
-
-  var C11 = (
-    <div className="c11">
-      <Details
-        setPop={setPop}
-        sub={sub}
-        totalArray={totalArray}
-        dates={dates}
-        subjects={subjects}
-      />
-    </div>
-  );
+  const nodeRef = useRef(null);
+  const nodeRef1 = useRef(null);
 
   const CusInput = forwardRef(({ value, onClick }, ref) => (
     <button className="dat" onClick={onClick} ref={ref}>
@@ -94,22 +85,24 @@ function Record({
 
     return (
       <tr key={ind}>
-        <td
-          className="c12"
-          onClick={() => {
-            setPop((pop) => !pop);
-            setSub(sub);
-          }}
-        >
-          {sub
-            .replace(/([a-z])([A-Z])/g, "$1 $2")
-            .charAt(0)
-            .toUpperCase() + sub.replace(/([a-z])([A-Z])/g, "$1 $2").slice(1)}
-          {recent === sub ? (
-            <sup className="lastupdated">Recent Class</sup>
-          ) : (
-            ""
-          )}
+        <td className="c12">
+          <span
+            onClick={() => {
+              // document.getElementById("t1").style.right = "100%";
+              setSub(sub);
+              setPop((pop) => !pop);
+            }}
+          >
+            {sub
+              .replace(/([a-z])([A-Z])/g, "$1 $2")
+              .charAt(0)
+              .toUpperCase() + sub.replace(/([a-z])([A-Z])/g, "$1 $2").slice(1)}
+            {recent === sub ? (
+              <sup className="lastupdated">Recent Class</sup>
+            ) : (
+              ""
+            )}
+          </span>
         </td>
         <td>{attendance[ind]}</td>
         <td>{totAttend[ind]}</td>
@@ -195,10 +188,36 @@ function Record({
   });
 
   return (
-    <div className="record mt-5">
-      {pop && C11}
-      {pop === false ? (
-        <table className="table">
+    <div className="record mt-5" id="r5">
+      <CSSTransition
+        in={pop}
+        nodeRef={nodeRef}
+        timeout={500}
+        classNames="detailpanel"
+        unmountOnExit
+      >
+        <div className="c11" ref={nodeRef}>
+          <Details
+            setPop={setPop}
+            sub={sub}
+            totalArray={totalArray}
+            dates={dates}
+            subjects={subjects}
+          />
+        </div>
+      </CSSTransition>
+
+      <CSSTransition
+        in={!pop}
+        nodeRef={nodeRef1}
+        timeout={500}
+        classNames="tablepanel"
+        unmountOnExit
+        onExit={() => {
+          document.getElementById("r5").scrollTop = 0;
+        }}
+      >
+        <table className="table" id="t1" ref={nodeRef1}>
           <thead>
             <tr>
               <th>Subject</th>
@@ -212,9 +231,7 @@ function Record({
 
           <tbody>{col}</tbody>
         </table>
-      ) : (
-        ""
-      )}
+      </CSSTransition>
     </div>
   );
 }
