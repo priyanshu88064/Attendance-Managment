@@ -319,6 +319,6 @@ code {
 .tablepanel-exit-active {
   overflow: hidden;
   position: relative;
-  right: 140%;
+  right: 160%;
   transition: right 0.5s;
 }
